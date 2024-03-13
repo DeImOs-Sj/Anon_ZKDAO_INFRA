@@ -34,14 +34,10 @@ export default function Home() {
             </div>
 
             <div className="text-center lg:text-left">
-                <a
-                    className="block visible py-4 px-8 mb-4 text-xs font-semibold tracking-wide leading-none text-white bg-blue-500 rounded cursor-pointer sm:mr-3 sm:mb-0 sm:inline-block"
-                    >Getting Started with DAo</a
-                >
+            <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Getting Started with Dao</button>
 
-                <button
-                    className="block visible py-4 px-8 text-xs font-semibold leading-none bg-white rounded border border-solid cursor-pointer sm:inline-block border-slate-200 text-slate-500"
-                     onClick={() => router.push("/register")}>Register Now?</button>
+            <button type="button" className="text-blue-700 hover:text-white bg-gradient-to-r  border border-blue-700 hover:bg-blue-800  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-700 dark:hover:text-white dark:hover:bg-blue-600"
+             onClick={() => router.push("/register")}>Register Now?</button>
             </div>
         </div>
 
