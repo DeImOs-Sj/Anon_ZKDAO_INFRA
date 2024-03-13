@@ -40,7 +40,7 @@ const RegisterForm = () => {
         if (profileImage) {
           toast({
             title: "Image Uploaded to the IPFS.",
-            description: "Congratulations 🎉 ",
+            description: "Congratulations!",
             status: "success",
             duration: 5000,
             isClosable: true,
@@ -83,7 +83,7 @@ const RegisterForm = () => {
 
       toast({
         title: "User Registered.",
-        description: "Congratulations 🎉 ",
+        description: "Congratulations! ",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -117,7 +117,7 @@ const RegisterForm = () => {
 
       toast({
         title: "User Registered.",
-        description: "Congratulations 🎉 ",
+        description: "Congratulations!",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -143,27 +143,27 @@ const RegisterForm = () => {
 
   return (
     <>
-        <div className=" flex justify-center items-center h-screen bg-white">
+    <div class="flex flex-col items-center justify-center p-6" style={{ backgroundColor: '' }}>
             <div className="flex flex-col justify-start items-start w-full space-y-9">
                 <div className="flex flex-col xl:flex-row justify-center xl:justify-between space-y-6 xl:space-y-0 xl:space-x-6 w-full">
                     <div className="xl:w-3/5 flex flex-col sm:flex-row xl:flex-col justify-center items-center  py-7 sm:py-0 xl:py-10 px-10 xl:w-full">
                         <div className="flex flex-col justify-start items-start w-full space-y-4">
                         </div>
                         <div className="mt-6 sm:mt-0 xl:my-10 xl:px-20 w-52 sm:w-96 xl:w-auto">
-                            <img  className="w-[40rem] h-[40rem] " src="https://framerusercontent.com/images/CHqmTOVLmd0ioUj4qz3wq4hKIE.webp" alt="DAO" />
+                            <img  className="w-[70rem] h-[30rem] " src="https://static.vecteezy.com/system/resources/previews/025/313/316/non_2x/dao-word-concepts-green-banner-decentralized-autonomous-organizations-infographics-with-editable-icons-on-color-background-isolated-typography-illustration-with-text-vector.jpg" alt="DAO" />
                         </div>
                     </div>
     
                     <div className="p-8  flex flex-col lg:w-full xl:w-3/5">
  <div className="flex flex-row justify-center items-center mt-6">
                             <hr className="border w-full" />
-                            <p className="flex flex-shrink-0 px-4 font-semibold leading-4 text-xl text-blue-600">Register Yourself</p>
+                            <p className="flex flex-shrink-0 px-4 font-semibold leading-4 text-xl text-green-400">Register Yourself</p>
                             <hr className="border w-full" />
                       </div>
-                 <label className="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">Username</label>
+                 <label className="mt-4 text-base leading-4 text-gray-800 dark:text-gray-50">Username</label>
                      <div className="mt-2">
 <input 
-  className="border border-gray-300 p-4 rounded w-full text-base leading-4 text-gray-600 placeholder-gray-600 bg-[#97b4f0] " 
+  className="border border-gray-300 p-2 rounded w-full text-base leading-4 text-gray-600 placeholder-gray-600 bg-[#97b4f0] " 
   type="email" 
   name="" 
   id="" 
@@ -171,24 +171,24 @@ const RegisterForm = () => {
   onChange={(e) => setName(e.target.value)} 
 />
                         </div>
-                     <label className="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">Email</label>
+                     <label className="mt-4 text-base leading-4 text-gray-800 dark:text-gray-50">Email</label>
 
                         <div className="mt-2">
-                            <input className="border border-gray-300 p-4 rounded w-full text-base leading-4 text-gray-600 placeholder-gray-600 bg-[#97b4f0]" type="email" name="" id="" placeholder="Email"               onChange={(e) => setEmail(e.target.value)}
+                            <input className="border border-gray-300 p-2 rounded w-full text-base leading-4 text-gray-600 placeholder-gray-600 bg-[#97b4f0]" type="email" name="" id="" placeholder="Email"               onChange={(e) => setEmail(e.target.value)}
  />
                         </div>
     
-                        <label className="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">Enter Your Bio</label>
+                        <label className="mt-4 text-base leading-4 text-gray-800 dark:text-gray-50">Enter Your Bio</label>
                         <div className="mt-2 flex-col">
                             <div>
-                              <input className="border rounded-tl rounded-tr border-gray-300 p-4 h-[6rem] w-full text-base leading-4  text-gray-600 placeholder-gray-600 bg-[#97b4f0] " type="email" name="" id="" placeholder="Enter Your Bio"                onChange={(e) => setBio(e.target.value)}
+                              <input className="border rounded-tl rounded-tr border-gray-300 p-2 h-[6rem] w-full text-base leading-4  text-gray-600 placeholder-gray-600 bg-[#97b4f0] " type="email" name="" id="" placeholder="Enter Your Bio"                onChange={(e) => setBio(e.target.value)}
 />
                 
                             </div>
                     
                         </div>
     <div class="mb-6 pt-4">
-        <label class="mb-5 block   text-gray-800 dark:text-gray-50">
+        <label class=" block   text-gray-800 dark:text-gray-50">
           Upload Image
               </label>
               <p>{profileImage?.name}</p>
@@ -199,42 +199,19 @@ const RegisterForm = () => {
                         ref={inputRef}
                         onChange={changeHandler}
                         accept=".png, .jpg, .jpeg" />
-          <label
-            for="file"
-            class="relative flex min-h-[200px] bg-[#FFFFFF] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
-          >
-            <div>
-              <span class="mb-2 block text-xl font-semibold text-gray-600">
-                Drop files here
-              </span>
-              <span class="mb-2 block text-base font-medium text-[#6B7280]">
-                Or
-              </span>
-              <span
-                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-600"
-              >
-                Browse
-                    </span>
-
-                      <button className="mt-8 border border-transparent hover:border-gray-300 dark:bg-white dark:hover:bg-gray-900 dark:text-gray-900 dark:hover:text-white dark:border-transparent bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full "  
-                         onClick={uploadIPFS}>
-                         Upload To IPFS
-                        </button>
-                    
-            </div>
-          </label>
-        </div>
-                  </div>   
-    
-                      
-    
-                        <button className="mt-8 border border-transparent hover:border-gray-300 dark:bg-[#97b4f0] dark:hover:bg-gray-900 dark:text-gray-900 dark:hover:text-white dark:border-transparent bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full " onClick={handleSubmit}>
+           <button class="mt-4 bg-green-400 hover:bg-white text-white hover:text-gray-900 font-bold py-2 px-4 rounded w-full transition-colors duration-300" onClick={uploadIPFS}>
+      Upload To IPFS
+    </button>
+           
+                      <button className="mt-4 border border-transparent hover:border-gray-300 font-bold dark:bg-[#97b4f0] dark:hover:bg-gray-900 dark:text-gray-900 dark:hover:text-white dark:border-transparent bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full " onClick={handleSubmit}>
                             <div>
                                 <p className="text-base leading-4">Join</p>
                             </div>
                         </button>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
         </div>
     </>
