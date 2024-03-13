@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <>
       <header className="container ">
-        <nav className="flex justify-between md:justify-around py-4 bg-white/80 backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 px-8 md:px-3">
+        <nav className="flex justify-between md:justify-around py- bg-white/80 backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 px-8 md:px-3">
           <div className="flex items-center">
             <a className="cursor-pointer">
               <h3 className="text-2xl font-medium text-blue-500">

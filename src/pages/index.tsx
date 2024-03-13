@@ -11,7 +11,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="bg-white mt-[6rem]">
+    <div className="bg-white mt-[4rem]">
     {/* <!-- Hero --> */}
     <section
         className="flex flex-wrap items-center -mx-3 font-sans px-4 mx-auto w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md pb-20 gap-y-[10rem]" >
@@ -34,7 +34,7 @@ export default function Home() {
             </div>
 
             <div className="text-center lg:text-left">
-            <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Getting Started with Dao</button>
+            <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Getting Started with DAO</button>
 
             <button type="button" className="text-blue-700 hover:text-white bg-gradient-to-r  border border-blue-700 hover:bg-blue-800  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-700 dark:hover:text-white dark:hover:bg-blue-600"
              onClick={() => router.push("/register")}>Register Now?</button>
@@ -102,199 +102,59 @@ export default function Home() {
 
 
 <footer className="bg-gray-800 pt-10 sm:mt-10 pt-10 w-full">
-    <div className="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-left">
-        {/* <!-- Col-1 --> */}
-        <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
-            {/* <!-- Col Title --> */}
-            <div className="text-xs uppercase text-gray-400 font-medium mb-6">
-                Getting Started
+   
+
+<footer className="bg-white dark:bg-gray-900">
+<div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 text-center"> {/* Added text-center class */}
+    <div className="md:flex md:justify-between">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6"> {/* Adjusted grid layout */}
+            <div className="mx-auto sm:mx-0"> {/* Added mx-auto and sm:mx-0 for center alignment */}
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                    <li className="mb-4">
+                        <a href="#" className="hover:underline">Tailwind CSS</a>
+                    </li>
+                </ul>
             </div>
-
-            {/* <!-- Links --> */}
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Installation
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Release Notes
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Upgrade Guide
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Using with Preprocessors
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Optimizing for Production
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Browser Support
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                IntelliSense
-            </a>
-        </div>
-
-        {/* <!-- Col-2 --> */}
-        <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
-            {/* <!-- Col Title --> */}
-            <div className="text-xs uppercase text-gray-400 font-medium mb-6">
-                Core Concepts
+            <div className="mx-auto sm:mx-0"> {/* Added mx-auto and sm:mx-0 for center alignment */}
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                    <li className="mb-4">
+                        <a href="#" className="hover:underline ">Github</a>
+                    </li>
+                    <li>
+                        <a href="#" className="hover:underline">Discord</a>
+                    </li>
+                </ul>
             </div>
-
-            {/* <!-- Links --> */}
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Utility-First
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Responsive Design
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Hover, Focus, & Other States
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Dark Mode
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Adding Base Styles
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Extracting Components
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Adding New Utilities
-            </a>
-        </div>
-
-        {/* <!-- Col-3 --> */}
-        <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
-            {/* <!-- Col Title --> */}
-            <div className="text-xs uppercase text-gray-400 font-medium mb-6">
-                Customization
-            </div>
-
-            {/* <!-- Links --> */}
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Configuration
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Theme Configuration
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Breakpoints
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Customizing Colors
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Customizing Spacing
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Configuring Variants
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Plugins
-            </a>
-        </div>
-
-        {/* <!-- Col-3 --> */}
-        <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
-            {/* <!-- Col Title --> */}
-            <div className="text-xs uppercase text-gray-400 font-medium mb-6">
-                Community
-            </div>
-
-            {/* <!-- Links --> */}
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                GitHub
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Discord
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                Twitter
-            </a>
-            <a
-                href="#"
-                className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
-                YouTube
-            </a>
-        </div>
-    </div>
-
-    {/* <!-- Copyright Bar --> */}
-    <div className="pt-2">
-        <div
-            className="flex pb-5 px-3 m-auto pt-5 border-t border-gray-500 text-gray-400 text-sm flex-col md:flex-row max-w-6xl">
-            <div className="mt-2">© Copyright 1998-year. All Rights Reserved.</div>
-
-            {/* <!-- Required Unicons (if you want) --> */}
-            <div className="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
-                <a href="#" className="w-6 mx-1">
-                    <i className="uil uil-facebook-f"></i>
-                </a>
-                <a href="#" className="w-6 mx-1">
-                    <i className="uil uil-twitter-alt"></i>
-                </a>
-                <a href="#" className="w-6 mx-1">
-                    <i className="uil uil-youtube"></i>
-                </a>
-                <a href="#" className="w-6 mx-1">
-                    <i className="uil uil-linkedin"></i>
-                </a>
-                <a href="#" className="w-6 mx-1">
-                    <i className="uil uil-instagram"></i>
-                </a>
+            <div className="mx-auto sm:mx-0"> {/* Added mx-auto and sm:mx-0 for center alignment */}
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                    <li className="mb-4">
+                        <a href="#" className="hover:underline">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="#" className="hover:underline">Terms &amp; Conditions</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+    <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    <div className="sm:flex sm:items-center sm:justify-center"> {/* Updated sm:justify-between to sm:justify-center */}
+        <span className="text-sm text-gray-500 dark:text-gray-400">© 2023 ZKPDAO All Rights Reserved.
+        </span>
+        <div className="flex mt-4 sm:mt-0">
+            <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                {/* Your social media icons */}
+            </a>
+            {/* Repeat for other social media icons */}
+        </div>
+    </div>
+</div>
+
+</footer>
+
     </footer>  
     </div>
   );
