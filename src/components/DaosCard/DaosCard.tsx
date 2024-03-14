@@ -9,6 +9,15 @@ import {
   Image,
   SpaceProps,
   useToast,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  Button,
+  ModalFooter,
+  Link
 } from "@chakra-ui/react";
 
 import usersideabi from "../../utils/contractabis/usersideabi.json";
@@ -146,53 +155,49 @@ const DaosCard = ({
   };
 
   return (
-    <div className= "mx-auto">
-      {/* First card */}
-      <div className="border border-red-500 ">
-        <div className="w-full ">
+      <div className="border border-[#333232] mb-[1rem] ">
+        <div className="w-full h-[30rem] p-[1rem]">
           <div className="relative">
             <a href="#">
               <img
-                src="https://picsum.photos/seed/59/300/200"
+                src="https://cointelegraph.com/magazine/wp-content/uploads/2022/09/magazine-Work-for-a-DAO-1024x576.jpg"
                 className="w-96 h-auto"
                 alt="Placeholder"
               />
             </a>
           </div>
-          <div className="flex flex-col mt-2 gap-2">
-            <a href="#">
-              <p className="text-gray-100 text-sm font-semibold">{daoName}</p>
-            </a>
-            <a
-              className="text-gray-400 text-xs mt-2 hover:text-gray-100"
-              href="#"
-            >
-              {" "}
-              Minimum Tokens Required: {joiningThreshold.toString() / 1e18}{" "}
-              {tokenSymbol}
-            </a>
-            <p className="text-gray-400 text-xs mt-1">{tokenName}</p>
-            <p className="text-gray-400 text-xs mt-1">{tokenSymbol}</p>
-            <p className="text-gray-400 text-xs mt-1">{totalDaoMember}</p>
-            <p className="text-gray-400 text-xs mt-1">{creatorName}</p>
-            <button
-              type="button"
-              className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold"
-              onClick={joinDao}
-            >
-              Join Dao
-            </button>
-            <button
-              type="button"
-              className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold"
-              onClick={() => router.push(`/dao/${daoId}`)}
-            >
-              View Dao
-            </button>
-          </div>
+         <div className="flex flex-col mt-2 gap-2 text-gray-400 text-xs ">
+  <a href="#">
+    <p className="text-gray-100  font-semibold text-center text-2xl p-[2px]">{daoName}</p>
+          </a>
+          <div className="text-sm">
+  <a className="hover:text-gray-100 ">
+    Minimum Tokens Required: {(joiningThreshold / 1e18).toFixed(2)} {tokenSymbol}
+  </a>
+  <p>{tokenName}</p>
+  <p>{tokenSymbol}</p>
+  <p>{totalDaoMember}</p>
+            <p>{creatorName}</p>
+            </div>
+  <button
+    type="button"
+    className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold mt-[1rem]"
+    onClick={joinDao}
+  >
+    Join Dao
+  </button>
+  <button
+    type="button"
+    className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold mt-[1rem]"
+    onClick={() => router.push(`/dao/${daoId}`)}
+  >
+    View Dao
+  </button>
+</div>
+
         </div>
-      </div>
-      {/* <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+     <div>
+      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Join DAO</ModalHeader>
@@ -230,7 +235,8 @@ const DaosCard = ({
             </Button>
           </ModalFooter>
         </ModalContent>
-      </Modal> */}
+        </Modal>
+        </div>
     </div>
   );
 };
