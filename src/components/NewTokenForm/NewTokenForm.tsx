@@ -192,47 +192,38 @@ const Form1 = ({ getTokenSymbol, getTokenName, getTokenSupply }) => {
 
   return (
     <>
-      <Heading w="100%" textAlign="center" fontWeight="normal">
-        Token Details
-      </Heading>
-      <SimpleGrid columns={1} spacing={6}>
-        <FormControl mr="2%">
-          <FormLabel htmlFor="tokenSymbol" fontWeight="normal">
-            Token Symbol
-          </FormLabel>
+      <div>
+      <div className="relative min-h-screen grid bg-black ">
+        <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 ">
+          <div className="relative sm:w-1/2 xl:w-3/5 bg-blue-500 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover relative" style={{backgroundImage: `url("/bitcoin1.png")`}}>
+            <div className="absolute bg-black opacity-25 inset-0 z-0"></div>
+            <div className="w-full lg:max-w-2xl md:max-w-md z-10 items-center text-center ">
+              <div className="font-bold leading-tight mb-6 mx-auto w-full content-center items-center "></div>
+            </div>
+          </div>
 
-          <Input
-            id="tokenSymbol"
-            placeholder="Token Symbol"
-            autoComplete="off"
-            onChange={(e) => handleSymbol(e.target.value)}
-          />
-        </FormControl>
-        <FormControl mr="2%">
-          <FormLabel htmlFor="tokenName" fontWeight="normal">
-            Token Name
-          </FormLabel>
-
-          <Input
-            id="tokenName"
-            placeholder="Token Name"
-            autoComplete="off"
-            onChange={(e) => handleTokenName(e.target.value)}
-          />
-        </FormControl>
-        <FormControl mr="2%">
-          <FormLabel htmlFor="tokenSymbol" fontWeight="normal">
-            Token Supply
-          </FormLabel>
-
-          <Input
-            id="tokenSymbol"
-            placeholder="Token Supply"
-            autoComplete="off"
-            onChange={(e) => handleSupply(e.target.value)}
-          />
-        </FormControl>
-      </SimpleGrid>
+          <div className="md:flex md:items-center md:justify-left w-full sm:w-auto md:h-full xl:w-1/2 p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none ">
+            <div className="max-w-xl w-full space-y-12">
+              <div className="lg:text-left text-center">
+                <div className="flex items-center justify-center ">
+                  <div className="bg-black flex flex-col w-[35rem] border border-gray-900 rounded-lg px-8 py-10">
+                    <form className="flex flex-col space-y-8 mt-10" htmlFor="tokenSymbol">
+                      <label className="font-bold text-lg text-white">Token Symbol</label>
+                      <input type="text" placeholder="Username" className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"  id="tokenSymbol" placeholder="Token Symbol" autoComplete="off" onChange={(e) => handleSymbol(e.target.value)}/>
+                      <label className="font-bold text-lg text-white">Token Name</label>
+                      <input type="email" placeholder="Email" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white" id="tokenName" placeholder="Token Name" onChange={(e) => handleTokenName(e.target.value)}/>
+                      <label className="font-bold text-lg text-white">Token Supply</label>
+                      <input type="text" placeholder="Supply" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white" onChange={(e) => handleSupply(e.target.value)}/>
+                      {/* <button type="button" className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold" onClick={handleSubmit}>Create Account</button> */}
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     </>
   );
 };
@@ -419,15 +410,7 @@ console.log("hrlloo",accounts[0])
   };
 
   return (
-    <Box
-      borderWidth="1px"
-      rounded="lg"
-      shadow="1px 1px 3px rgba(0,0,0,0.3)"
-      width="60%"
-      p={6}
-      m="10px auto"
-      as="form"
-    >
+    <div>
       <Progress
         hasStripe
         value={progress}
@@ -450,7 +433,7 @@ console.log("hrlloo",accounts[0])
           getVisibility={(q) => setdaoVisibility(q)}
         />
       )}
-      <ButtonGroup mt="5%" w="100%">
+      <ButtonGroup  w="100%">
         <Flex w="100%" justifyContent="space-between">
           <Flex>
             {step === 1 ? (
@@ -510,6 +493,6 @@ console.log("hrlloo",accounts[0])
           ) : null}
         </Flex>
       </ButtonGroup>
-    </Box>
+      </div>
   );
 }

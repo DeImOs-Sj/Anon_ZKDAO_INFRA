@@ -3,43 +3,19 @@ import React, { useState, useEffect } from "react";
 import * as bandadaAPI from "../../pages/api/bandadaAPI";
 import {
   useDisclosure,
-  Lorem,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  ModalFooter,
-  Box,
-  Heading,
   Text,
-  Divider,
   HStack,
   Tag,
   Image,
-  Wrap,
-  WrapItem,
   SpaceProps,
-  useColorModeValue,
-  Container,
-  VStack,
-  Button,
   useToast,
-  Center,
-  Flex,
-  Tooltip,
 } from "@chakra-ui/react";
-import { Link } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { AddIcon } from "@chakra-ui/icons";
-import { RiTokenSwapFill } from "react-icons/ri";
-import { MdOutlineGroups3 } from "react-icons/md";
-import { RiAdminLine } from "react-icons/ri";
+
 import usersideabi from "../../utils/contractabis/usersideabi.json";
 import { ParticleProvider } from "@particle-network/provider";
 import { ethers } from "ethers";
 import { useRouter } from "next/router";
+import { join } from "path";
 
 interface IBlogTags {
   tags: Array<string>;
@@ -168,199 +144,55 @@ const DaosCard = ({
       });
     }
   };
-  return (
-    <Center>
-      <Box
-        marginTop={{ base: "1", sm: "8" }}
-        display="flex"
-        flexDirection={{ base: "column", sm: "row" }}
-        justifyContent="center"
-        mb={8}
-        marginLeft={{ base: "0", sm: "5%" }}
-        width={{ base: "100%", sm: "65%" }}
-        rounded={{ base: "none", sm: "xl" }}
-        boxShadow={{ base: "lg", sm: "xxl" }}
-        borderWidth="1px"
-        overflow="hidden"
-        // on hover raise the card
 
-        _hover={{
-          boxShadow: "xl",
-          transform: "translateY(-4px)",
-        }}
-      >
-        <Box
-          display="flex"
-          flex="1"
-          marginRight="3"
-          position="relative"
-          alignItems="center"
-        >
-          {/* <Box
-            width={{ base: "100%", sm: "85%" }}
-            zIndex="2"
-            marginLeft={{ base: "0", sm: "5%" }}
-            marginTop="5%"
-          > */}
-          <Box textDecoration="none" _hover={{ textDecoration: "none" }}>
-            <Image
-              borderRadius="lg"
-              src="/assets/dao.png"
-              alt="Cover Image"
-              //   objectFit="contain"
-              _placeholder={blur}
-              width={{ base: "100%", sm: "100%" }}
-              rounded={{ base: "none", sm: "xl" }}
-              height={{ base: "100%", sm: "100%" }}
-              zIndex="2"
-              alignItems={"center"}
-              display={"flex"}
-              alignContent={"center"}
-              justifyContent={"center"}
-            />
-          </Box>
-          {/* </Box> */}
-          <Box zIndex="1" width="100%" position="absolute" height="100%">
-            <Box
-              bgGradient={useColorModeValue(
-                "radial(orange.600 1px, transparent 1px)",
-                "radial(orange.300 1px, transparent 1px)"
-              )}
-              backgroundSize="20px 20px"
-              opacity="0.4"
-              height="100%"
-            />
-          </Box>
-        </Box>
-        <Box
-          display="flex"
-          flex="1"
-          flexDirection="column"
-          justifyContent="center"
-          marginTop={{ base: "3", sm: "0" }}
-        >
-          <Heading marginTop="1">
-            <Center>
-              <Text textDecoration="none" _hover={{ textDecoration: "none" }}>
-                {daoName}
-              </Text>
-            </Center>
-          </Heading>
-          <Center>
-            {" "}
-            <Text
-              as="p"
-              marginTop="6"
-              color={useColorModeValue("gray.700", "gray.200")}
-              fontSize="lg"
+  return (
+    <div className= "mx-auto">
+      {/* First card */}
+      <div className="border border-red-500 ">
+        <div className="w-full ">
+          <div className="relative">
+            <a href="#">
+              <img
+                src="https://picsum.photos/seed/59/300/200"
+                className="w-96 h-auto"
+                alt="Placeholder"
+              />
+            </a>
+          </div>
+          <div className="flex flex-col mt-2 gap-2">
+            <a href="#">
+              <p className="text-gray-100 text-sm font-semibold">{daoName}</p>
+            </a>
+            <a
+              className="text-gray-400 text-xs mt-2 hover:text-gray-100"
+              href="#"
             >
+              {" "}
               Minimum Tokens Required: {joiningThreshold.toString() / 1e18}{" "}
               {tokenSymbol}
-            </Text>
-          </Center>
-          <Flex
-            justifyContent={"space-between"}
-            marginLeft={10}
-            marginRight={10}
-            marginTop={6}
-            alignItems={"center"}
-          >
-            <Text
-              as="p"
-              marginTop="2"
-              color={useColorModeValue("gray.700", "gray.200")}
-              fontSize="lg"
+            </a>
+            <p className="text-gray-400 text-xs mt-1">{tokenName}</p>
+            <p className="text-gray-400 text-xs mt-1">{tokenSymbol}</p>
+            <p className="text-gray-400 text-xs mt-1">{totalDaoMember}</p>
+            <p className="text-gray-400 text-xs mt-1">{creatorName}</p>
+            <button
+              type="button"
+              className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold"
+              onClick={joinDao}
             >
-              {tokenName}
-            </Text>
-            <Text
-              as="p"
-              marginTop="2"
-              color={useColorModeValue("gray.700", "gray.200")}
-              fontSize="lg"
+              Join Dao
+            </button>
+            <button
+              type="button"
+              className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold"
+              onClick={() => router.push(`/dao/${daoId}`)}
             >
-              <RiTokenSwapFill size={35} color="teal" />
-            </Text>
-            <Text
-              as="p"
-              marginTop="2"
-              color={useColorModeValue("gray.700", "gray.200")}
-              fontSize="lg"
-            >
-              {tokenSymbol}
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent={"space-between"}
-            marginLeft={10}
-            marginRight={10}
-            marginTop={6}
-          >
-            {" "}
-            <Flex
-              flexDir={"column"}
-              alignItems={"center"}
-              justifyContent={"center"}
-            >
-              <Tooltip label="Total Members">
-                <Text
-                  as="p"
-                  marginTop="2"
-                  color={useColorModeValue("gray.700", "gray.200")}
-                  fontSize="lg"
-                >
-                  <MdOutlineGroups3 size={30} />
-                </Text>
-              </Tooltip>
-              <Text
-                as="p"
-                marginTop="2"
-                color={useColorModeValue("gray.700", "gray.200")}
-                fontSize="lg"
-              >
-                {totalDaoMember}
-              </Text>
-            </Flex>
-            <Flex
-              flexDir={"column"}
-              alignItems={"center"}
-              justifyContent={"center"}
-            >
-              <Tooltip label="Admin">
-                <Text
-                  as="p"
-                  marginTop="2"
-                  color={useColorModeValue("gray.700", "gray.200")}
-                  fontSize="lg"
-                >
-                  <RiAdminLine size={25} />
-                </Text>
-              </Tooltip>
-              <Text
-                as="p"
-                marginTop="2"
-                color={useColorModeValue("gray.700", "gray.200")}
-                fontSize="lg"
-              >
-                {creatorName}
-              </Text>
-            </Flex>
-          </Flex>
-          <Button margin={6} mb={2} onClick={joinDao}>
-            <AddIcon mx="2px" /> Join DAO
-          </Button>
-          <Button
-            marginRight={6}
-            marginLeft={6}
-            marginBottom={2}
-            mt={2}
-            onClick={() => router.push(`/dao/${daoId}`)}
-          >
-            View More <ExternalLinkIcon mx="2px" />
-          </Button>
-        </Box>
-      </Box>
-      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+              View Dao
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Join DAO</ModalHeader>
@@ -370,7 +202,8 @@ const DaosCard = ({
               <Text>
                 {" "}
                 ✔️ Added to Bandada group <br />
-                🚀 Group id : <span>{process.env.NEXT_PUBLIC_GROUP_ID} </span>
+                🚀 Group id :{" "}
+                <span>{process.env.NEXT_PUBLIC_GROUP_ID} </span>
               </Text>
             ) : (
               <Text>Adding to Bandada grp</Text>
@@ -397,8 +230,8 @@ const DaosCard = ({
             </Button>
           </ModalFooter>
         </ModalContent>
-      </Modal>
-    </Center>
+      </Modal> */}
+    </div>
   );
 };
 

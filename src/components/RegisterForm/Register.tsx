@@ -142,79 +142,60 @@ const RegisterForm = () => {
   };
 
   return (
-    <>
-    <div class="flex flex-col items-center justify-center p-6" style={{ backgroundColor: '' }}>
-            <div className="flex flex-col justify-start items-start w-full space-y-9">
-                <div className="flex flex-col xl:flex-row justify-center xl:justify-between space-y-6 xl:space-y-0 xl:space-x-6 w-full">
-                    <div className="xl:w-3/5 flex flex-col sm:flex-row xl:flex-col justify-center items-center  py-7 sm:py-0 xl:py-10 px-10 xl:w-full">
-                        <div className="flex flex-col justify-start items-start w-full space-y-4">
-                        </div>
-                        <div className="mt-6 sm:mt-0 xl:my-10 xl:px-20 w-52 sm:w-96 xl:w-auto">
-                            <img  className="w-[70rem] h-[30rem] " src="https://static.vecteezy.com/system/resources/previews/025/313/316/non_2x/dao-word-concepts-green-banner-decentralized-autonomous-organizations-infographics-with-editable-icons-on-color-background-isolated-typography-illustration-with-text-vector.jpg" alt="DAO" />
-                        </div>
-                    </div>
-    
-                    <div className="p-8  flex flex-col lg:w-full xl:w-3/5">
- <div className="flex flex-row justify-center items-center mt-6">
-                            <hr className="border w-full" />
-                            <p className="flex flex-shrink-0 px-4 font-semibold leading-4 text-xl text-green-400">Register Yourself</p>
-                            <hr className="border w-full" />
-                      </div>
-                 <label className="mt-4 text-base leading-4 text-gray-800 dark:text-gray-50">Username</label>
-                     <div className="mt-2">
-<input 
-  className="border border-gray-300 p-2 rounded w-full text-base leading-4 text-gray-600 placeholder-gray-600 bg-[#97b4f0] " 
-  type="email" 
-  name="" 
-  id="" 
-  placeholder="Username" 
-  onChange={(e) => setName(e.target.value)} 
-/>
-                        </div>
-                     <label className="mt-4 text-base leading-4 text-gray-800 dark:text-gray-50">Email</label>
+ <div>
+      <div className="relative min-h-screen grid bg-black ">
+        <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 ">
+          <div className="relative sm:w-1/2 xl:w-3/5 bg-blue-500 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover relative" style={{backgroundImage: `url("/bitcoin1.png")`}}>
+            <div className="absolute bg-black opacity-25 inset-0 z-0"></div>
+            <div className="w-full lg:max-w-2xl md:max-w-md z-10 items-center text-center ">
+              <div className="font-bold leading-tight mb-6 mx-auto w-full content-center items-center "></div>
+            </div>
+          </div>
 
-                        <div className="mt-2">
-                            <input className="border border-gray-300 p-2 rounded w-full text-base leading-4 text-gray-600 placeholder-gray-600 bg-[#97b4f0]" type="email" name="" id="" placeholder="Email"               onChange={(e) => setEmail(e.target.value)}
+          <div className="md:flex md:items-center md:justify-left w-full sm:w-auto md:h-full xl:w-1/2 p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none ">
+            <div className="max-w-xl w-full space-y-12">
+              <div className="lg:text-left text-center">
+                <div className="flex items-center justify-center ">
+                  <div className="bg-black flex flex-col w-[35rem] border border-gray-900 rounded-lg px-8 py-10">
+                    <form className="flex flex-col space-y-8 mt-10">
+                      <label className="font-bold text-lg text-white">Username</label>
+                      <input type="text" placeholder="Username" className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"               onChange={(e) => setName(e.target.value)}
  />
-                        </div>
-    
-                        <label className="mt-4 text-base leading-4 text-gray-800 dark:text-gray-50">Enter Your Bio</label>
-                        <div className="mt-2 flex-col">
-                            <div>
-                              <input className="border rounded-tl rounded-tr border-gray-300 p-2 h-[6rem] w-full text-base leading-4  text-gray-600 placeholder-gray-600 bg-[#97b4f0] " type="email" name="" id="" placeholder="Enter Your Bio"                onChange={(e) => setBio(e.target.value)}
-/>
-                
-                            </div>
-                    
-                        </div>
-    <div class="mb-6 pt-4">
-        <label class=" block   text-gray-800 dark:text-gray-50">
-          Upload Image
-              </label>
-              <p>{profileImage?.name}</p>
+                      <label className="font-bold text-lg text-white">Email</label>
+                      <input type="email" placeholder="Email" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white"               onChange={(e) => setEmail(e.target.value)}
+                      />
+                      <label className="font-bold text-lg text-white">Profile Bio</label>
+                      <input type="text" placeholder="BIO" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white"                             onChange={(e) => setBio(e.target.value)}
 
-        <div class="mb-8">
-          <input type="file" id="file-upload" class="sr-only" className='placeholder-gray-600'     name="file-upload"
+ />
+                      <label className="font-bold text-lg text-white">Upload Profile Image</label>
+                      <div class="flex w-full items-center justify-center bg-grey-lighter">
+    <label className="w-64 flex flex-col items-center px-4 py-6 bg-blue-800 text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
+        <svg className="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+        </svg>
+        <span className="mt-2 text-base leading-normal">Select a file</span>
+<input type="file" id="file-upload" className="sr-only"     name="file-upload"
                 
                         ref={inputRef}
                         onChange={changeHandler}
-                        accept=".png, .jpg, .jpeg" />
-           <button class="mt-4 bg-green-400 hover:bg-white text-white hover:text-gray-900 font-bold py-2 px-4 rounded w-full transition-colors duration-300" onClick={uploadIPFS}>
-      Upload To IPFS
-    </button>
-           
-                      <button className="mt-4 border border-transparent hover:border-gray-300 font-bold dark:bg-[#97b4f0] dark:hover:bg-gray-900 dark:text-gray-900 dark:hover:text-white dark:border-transparent bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full " onClick={handleSubmit}>
-                            <div>
-                                <p className="text-base leading-4">Join</p>
-                            </div>
-                        </button>
-                    </div>
+                      accept=".png, .jpg, .jpeg" />    </label>
                 </div>
+                              <button type="button" className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold" onClick={uploadIPFS}>
+  Upload To IPFS
+</button>
+                      <button type="button" className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold" onClick={handleSubmit}>
+  Create Account
+</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
-            </div>
-            </div>
+          </div>
         </div>
-    </>
+      </div>
+    </div>
   );
 };
 

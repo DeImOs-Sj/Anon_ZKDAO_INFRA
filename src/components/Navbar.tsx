@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,8 +9,10 @@ export default function Navbar() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+  const router = useRouter();
   const account = useAccount();
+
+
 
   return (
     <>
@@ -29,7 +32,7 @@ export default function Navbar() {
 
           <div className="items-center md:space-x-8 justify-center justify-items-start md:justify-items-center md:flex md:pt-2 w-full left-0 top-16 px-5 md:px-10 py-3 md:py-0 border-t md:border-t-0">
             <a
-              href="/register"
+              onClick={() => router.push("/register")}
               className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
             >
               Register

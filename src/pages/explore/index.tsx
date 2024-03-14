@@ -17,6 +17,8 @@ import {
   Input,
   Select,
   SimpleGrid,
+  WrapItem,
+  Wrap,
   InputLeftAddon,
   InputGroup,
   Textarea,
@@ -167,44 +169,39 @@ const Explore = () => {
   }, []);
 
   return (
-    <Box>
-      {isLoading ? (
-        <AbsoluteCenter>
-          <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="orange.500"
-            size="xl"
-          />
-        </AbsoluteCenter>
-      ) : (
-        <Container
-          maxW={"7xl"}
-          p="12"
-          templateRows="repeat(2, 1fr)"
-          templateColumns="repeat(4, 1fr)"
-          gap={4}
-        >
-          {daos &&
-            daos
-              .filter((dao) => dao.daoInfo.isPrivate === false)
-              .map((dao) => (
-                <GridItem rowSpan={1}>
-                  <DaosCard
-                    daoName={dao.daoInfo.daoName}
-                    joiningThreshold={dao.daoInfo.joiningThreshold}
-                    creatorName={dao.creatorInfo.userName}
-                    tokenName={dao.tokenName}
-                    tokenSymbol={dao.tokenSymbol}
-                    totalDaoMember={totaluserDAO}
-                    daoId={dao.daoInfo.daoId}
-                  />
-                </GridItem>
-              ))}
-        </Container>
-      )}
-    </Box>
+   <Box>
+  {isLoading ? (
+    <AbsoluteCenter>
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="orange.500"
+        size="xl"
+      />
+    </AbsoluteCenter>
+  ) : (
+      <Flex spacing={4} justify="center" flex={3} maxW={"12xl"} gap={10} mt='8rem'>
+        {daos &&
+          daos
+            .filter((dao) => dao.daoInfo.isPrivate === false)
+            .map((dao) => (
+              <WrapItem key={dao.daoInfo.daoId} w="auto">
+                <DaosCard
+                  daoName={dao.daoInfo.daoName}
+                  joiningThreshold={dao.daoInfo.joiningThreshold}
+                  creatorName={dao.creatorInfo.userName}
+                  tokenName={dao.tokenName}
+                  tokenSymbol={dao.tokenSymbol}
+                  totalDaoMember={totaluserDAO}
+                  daoId={dao.daoInfo.daoId}
+                />
+              </WrapItem>
+            ))}
+      </Flex>
+  )}
+</Box>
+
   );
 };
 
