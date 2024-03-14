@@ -11,7 +11,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="bg-white mt-[4rem]">
+    <div className="bg-black mt-[4rem]">
     {/* <!-- Hero --> */}
     <section
         className="flex flex-wrap items-center -mx-3 font-sans px-4 mx-auto w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md pb-20 gap-y-[10rem]" >
