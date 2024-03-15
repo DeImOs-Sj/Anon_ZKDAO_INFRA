@@ -57,7 +57,7 @@ const index = () => {
   };
 
   const generateMerkleProof = async () => {
-    //const chatId = router.query.chatId;
+    const chatId = router.query.chatId;
     const tempIdentityString = localStorage.getItem("commitment-id");
 
     const res = await fetch(

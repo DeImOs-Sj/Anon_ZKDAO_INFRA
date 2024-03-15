@@ -251,7 +251,7 @@ export async function addMember(
     await request(`${API_URL}/groups/${groupId}/members/${memberId}`, {
       method: "POST",
       headers: {
-        "x-api-key": "52d4df3f-04fa-44d0-a7e6-5af3c73869db",
+        "x-api-key": "99500e16-7b3b-4514-af3b-191aec3bb6a5",
       },
     });
   } catch (error: any) {
