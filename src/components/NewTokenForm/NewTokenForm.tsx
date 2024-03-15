@@ -174,7 +174,7 @@ const Form3 = ({ getJoiningThreshold, getProposal, getVisibility }) => {
   );
 };
 
-const Form1 = ({ getTokenSymbol, getTokenName, getTokenSupply }) => {
+const Form1 = ({step, mintToken,setStep,getTokenSymbol, getTokenName, getTokenSupply,mintDone,setMintDone }) => {
   const toast = useToast();
   const [loading, setLoading] = useState(false);
 
@@ -191,31 +191,59 @@ const Form1 = ({ getTokenSymbol, getTokenName, getTokenSupply }) => {
   };
 
   return (
-    <>
+   <>
       <div>
-      <div className="relative min-h-screen grid bg-black ">
-        <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 ">
-          <div className="relative sm:w-1/2 xl:w-3/5 bg-blue-500 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover relative" style={{backgroundImage: `url("/bitcoin1.png")`}}>
-            <div className="absolute bg-black opacity-25 inset-0 z-0"></div>
-            <div className="w-full lg:max-w-2xl md:max-w-md z-10 items-center text-center ">
-              <div className="font-bold leading-tight mb-6 mx-auto w-full content-center items-center "></div>
+        <div className="relative min-h-screen grid bg-black ">
+          <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 ">
+            <div className="relative sm:w-1/2 xl:w-3/5 bg-blue-500 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover relative" style={{backgroundImage: `url("/bitcoin1.png")`}}>
+              <div className="absolute bg-black opacity-25 inset-0 z-0"></div>
+              <div className="w-full lg:max-w-2xl md:max-w-md z-10 items-center text-center ">
+                <div className="font-bold leading-tight mb-6 mx-auto w-full content-center items-center "></div>
+              </div>
             </div>
-          </div>
 
-          <div className="md:flex md:items-center md:justify-left w-full sm:w-auto md:h-full xl:w-1/2 p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none ">
-            <div className="max-w-xl w-full space-y-12">
-              <div className="lg:text-left text-center">
-                <div className="flex items-center justify-center ">
-                  <div className="bg-black flex flex-col w-[35rem] border border-gray-900 rounded-lg px-8 py-10">
-                    <form className="flex flex-col space-y-8 mt-10" htmlFor="tokenSymbol">
-                      <label className="font-bold text-lg text-white">Token Symbol</label>
-                      <input type="text" placeholder="Username" className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"  id="tokenSymbol" placeholder="Token Symbol" autoComplete="off" onChange={(e) => handleSymbol(e.target.value)}/>
-                      <label className="font-bold text-lg text-white">Token Name</label>
-                      <input type="email" placeholder="Email" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white" id="tokenName" placeholder="Token Name" onChange={(e) => handleTokenName(e.target.value)}/>
-                      <label className="font-bold text-lg text-white">Token Supply</label>
-                      <input type="text" placeholder="Supply" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white" onChange={(e) => handleSupply(e.target.value)}/>
-                      {/* <button type="button" className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold" onClick={handleSubmit}>Create Account</button> */}
-                    </form>
+            <div className="md:flex md:items-center md:justify-left w-full sm:w-auto md:h-full xl:w-1/2 p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none ">
+              <div className="max-w-xl w-full space-y-12">
+                <div className="lg:text-left text-center">
+                  <div className="flex items-center justify-center ">
+                    <div className="bg-black flex flex-col w-[35rem] border border-gray-900 rounded-lg px-8 py-10">
+                      <form className="flex flex-col space-y-8 mt-10" htmlFor="tokenSymbol">
+                        <label className="font-bold text-lg text-white">Token Symbol</label>
+                        <input type="text" placeholder="Username" className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"  id="tokenSymbol" placeholder="Token Symbol" autoComplete="off" onChange={(e) => handleSymbol(e.target.value)}/>
+                        <label className="font-bold text-lg text-white">Token Name</label>
+                        <input type="email" placeholder="Email" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white" id="tokenName" placeholder="Token Name" onChange={(e) => handleTokenName(e.target.value)}/>
+                        <label className="font-bold text-lg text-white">Token Supply</label>
+                        <input type="text" placeholder="Supply" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white" onChange={(e) => handleSupply(e.target.value)}/>
+ <ButtonGroup className="w-full mt-8 flex justify-center">
+        <Button
+          onClick={() => {
+            mintToken();
+          }}
+          colorScheme="teal"
+          variant="solid"
+          w="7rem"
+          mr="5%"
+        >
+          Mint
+        </Button>
+        <Button
+          w="7rem"
+          isDisabled={step === 3 || (step === 1 && !mintDone)}
+          onClick={() => {
+            setStep(step + 1);
+            if (step === 3) {
+              setProgress(100);
+            } else {
+              setProgress(progress + 33.33);
+            }
+          }}
+          colorScheme="teal"
+          variant="outline"
+        >
+          Next
+        </Button>
+      </ButtonGroup>                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -223,7 +251,8 @@ const Form1 = ({ getTokenSymbol, getTokenName, getTokenSupply }) => {
           </div>
         </div>
       </div>
-    </div>
+
+     
     </>
   );
 };
@@ -411,15 +440,12 @@ console.log("hrlloo",accounts[0])
 
   return (
     <div>
-      <Progress
-        hasStripe
-        value={progress}
-        mb="5%"
-        mx="5%"
-        isAnimated
-      ></Progress>
+      <Progress className="mb-5 mx-5" hasStripe value={progress} isAnimated></Progress>
       {step === 1 ? (
         <Form1
+          step={step}
+          mintToken={mintToken}
+          setStep={setStep}
           getTokenSymbol={(q) => setSymbol(q)}
           getTokenName={(q) => settokenName(q)}
           getTokenSupply={(q) => setTokenSupply(q)}
@@ -433,66 +459,6 @@ console.log("hrlloo",accounts[0])
           getVisibility={(q) => setdaoVisibility(q)}
         />
       )}
-      <ButtonGroup  w="100%">
-        <Flex w="100%" justifyContent="space-between">
-          <Flex>
-            {step === 1 ? (
-              <Button
-                onClick={() => {
-                  mintToken();
-                }}
-                colorScheme="teal"
-                variant="solid"
-                w="7rem"
-                mr="5%"
-              >
-                Mint
-              </Button>
-            ) : (
-              <Button
-                onClick={() => {
-                  setStep(step - 1);
-                  setProgress(progress - 33.33);
-                }}
-                colorScheme="teal"
-                variant="solid"
-                w="7rem"
-                mr="5%"
-              >
-                Back
-              </Button>
-            )}
-            <Button
-              w="7rem"
-              isDisabled={step === 3 || (step === 1 && !mintDone)}
-              onClick={() => {
-                setStep(step + 1);
-                if (step === 3) {
-                  setProgress(100);
-                } else {
-                  setProgress(progress + 33.33);
-                }
-              }}
-              colorScheme="teal"
-              variant="outline"
-            >
-              Next
-            </Button>
-          </Flex>
-          {step === 3 ? (
-            <Button
-              w="7rem"
-              colorScheme="red"
-              variant="solid"
-              onClick={() => {
-                createDAO();
-              }}
-            >
-              Submit
-            </Button>
-          ) : null}
-        </Flex>
-      </ButtonGroup>
-      </div>
+    </div>
   );
 }

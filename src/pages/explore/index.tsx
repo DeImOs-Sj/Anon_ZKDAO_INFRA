@@ -185,7 +185,9 @@ const Explore = () => {
  <div className="mt-[4.2rem] h-screen bg-black grid grid-cols-4 grid-rows-2 gap-y-15">
   {daos &&
     daos
-      .filter((dao) => dao.daoInfo.isPrivate === false)
+                .filter((dao) => dao.daoInfo.isPrivate === false)
+                      .slice(0, 6) // Display only the first 6 unique daoIds
+
       .map((dao) => (
         <div key={dao.daoInfo.daoId} className="flex justify-center ">
           <DaosCard

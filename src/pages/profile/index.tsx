@@ -16,6 +16,8 @@ import {
   Badge,
   Image,
   SimpleGrid,
+  Grid,
+  GridItem,
   Link,
   Flex,
 } from "@chakra-ui/react";
@@ -147,74 +149,124 @@ const Profile = () => {
   console.log(userDaos);
 
   return (
-    <Box maxW="800px" mx="auto" p={4}>
-      <Stack align="center">
-        <Avatar size="xl" name={userInfo[1]} src={userInfo[4]} />
+    <div className="h-screen">
+      <link
+        rel="stylesheet"
+        href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+      />
 
-        <Heading my={2}>{userInfo[1]}</Heading>
-        <Text color="gray.500">{userInfo[2]}</Text>
-        <Badge colorScheme="green">Online</Badge>
-      </Stack>
-
-      <Box mt={4}>
-        <Heading size="md">About Me</Heading>
-        <Text>{userInfo[3]}</Text>
-      </Box>
-
-      <Box mt={4}>
-        {userDaos?.length !== 0 && <Heading size="md">My DAO's</Heading>}
-        <SimpleGrid columns={1} spacing={4} mt={2}>
-          {userDaos?.length === 0 ? (
-            <Flex
-              direction="column"
-              align="center"
-              justify="center"
-              h="200px"
-              w="500px"
-              bg="teal.800"
-              borderWidth="1px"
-              borderRadius="lg"
-              p={8}
-              textAlign="center"
-              boxShadow="md"
-            >
-              <Text fontSize="lg" mb={4} fontWeight="bold" color="white">
-                You do not any membership DAO's yet
-              </Text>
-              <Link href="/explore">
-                <Button colorScheme="green">Join a DAO</Button>
-              </Link>
-            </Flex>
-          ) : (
-            userDaos.map((dao) => (
-              <Box
-                key={dao.daoInfo[0].toString()}
-                p={4}
-                borderWidth="1px"
-                borderRadius="lg"
-                position="relative"
-              >
-                <Heading size="sm">{dao.daoInfo.daoName}</Heading>
-                <Text mt={2}>{dao.daoInfo.daoDescription}</Text>
-                <Link
-                  color="teal.500"
-                  href={`https://circuitbreaker-two.vercel.app/dao/${dao.daoInfo[0].toString()}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  position="absolute"
-                  top="4"
-                  right="4"
-                  fontSize="xl"
-                  _hover={{ textDecoration: "underline" }}
+      <section class="pt-16 bg-white ">
+        <div class="w-full lg:w-4/12 px-4 mx-auto ">
+          <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16 border border-black">
+            <div class="px-6">
+              <div class="flex flex-wrap justify-center">
+                <div class="w-full px-4 flex justify-center mb-[6rem]">
+                  <div class="relative">
+                    <img
+                      alt="..."
+                      src={userInfo[4]}
+                      class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="text-center mt-12">
+                <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 " name={userInfo[1]} src={userInfo[4]} >
+                  {userInfo[1]}
+                </h3>
+                <div class="mb-2 text-blueGray-600">
+                  <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
+                  {userInfo[2]}
+                </div>
+              </div>
+              <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+                <div class="flex flex-wrap justify-center">
+                  <div class="w-full lg:w-9/12 px-4">
+                    <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
+                      {userInfo[3]}
+                    </p>
+                    <a
+                      href="javascript:void(0);"
+                      class="font-normal text-pink-500"
+                    >
+                      Show more
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-row justify-center text-black ">
+          <div className="mt-[4rem]  text-center w-[31rem]  h-screen ">
+            {userDaos?.length !== 0 && (
+              <div className="align-center text-3xl mb-[15px] font-bold">My DAO's</div>
+            )}
+            <div className="flex flex-col gap-10">
+              {userDaos?.length === 0 ? (
+                <Flex
+                  direction="column"
+                  align="center"
+                  justify="center"
+                  h="200px"
+                  w="500px"
+                  bg="white"
+                  // color="white"
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  p={8}
+                  textAlign="center"
+                  boxShadow="md"
                 >
-                  <Icon as={FaExternalLinkAlt} ml={2} />
-                </Link>
-              </Box>
-            ))
-          )}
-        </SimpleGrid>
-      </Box>
-    </Box>
+                  <Text
+                    fontSize="lg"
+                    mb={4}
+                    fontWeight="bold"
+                    color="black"
+                  >
+                    You do not any membership DAO's yet
+                  </Text>
+                  <Link href="/explore">
+                    <Button colorScheme="green">Join a DAO</Button>
+                  </Link>
+                </Flex>
+              ) : (
+                userDaos.map((dao) => (
+                  <div
+                    key={dao.daoInfo[0].toString()}
+                    className=" justify-center border border-[#686ebf] p-4 relative] rounded-xl"
+                  >
+                    <div className="w-[10rem] ">
+                      <div className="text-2xl flex flex-col text-center w-[28rem] gap-y-4">
+                        <span className="text-2xl font-semibold">
+                          {dao.daoInfo.daoName}
+                        </span>
+                        <span className="text-lg">
+                          {dao.daoInfo.daoDescription}
+                        </span>
+                        <div
+                          className="text-teal-500 absolute top-4 right-4 text-xl"
+                          href={`https://circuitbreaker-two.vercel.app/dao/${dao.daoInfo[0].toString()}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          _hover={{ textDecoration: "underline" }}
+                        >
+                          <Icon as={FaExternalLinkAlt} ml={2} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

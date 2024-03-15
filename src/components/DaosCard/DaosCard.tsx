@@ -155,7 +155,7 @@ const DaosCard = ({
   };
 
   return (
-      <div className="border border-[#333232] mb-[1rem] ">
+      <div className="border border-[#333232] mt-[3rem] mb-[1rem] ">
         <div className="w-full h-[30rem] p-[1rem]">
           <div className="relative">
             <a href="#">
@@ -220,7 +220,7 @@ const DaosCard = ({
               <Text>
                 ✔️Added to DAO{" "}
                 <Link
-                  href={`https://goerli.etherscan.io/tx/${txHash}`}
+                  href={`https://sepolia.etherscan.io/tx/${txHash}`}
                   isExternal
                 >
                   View Transaction
