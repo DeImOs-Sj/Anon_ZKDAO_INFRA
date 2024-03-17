@@ -14,7 +14,7 @@ export default function Home() {
     <div className="bg-black mt-[4rem]">
     {/* <!-- Hero --> */}
     <section
-        className="flex flex-wrap items-center -mx-3 font-sans px-4 mx-auto w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md pb-20 gap-y-[10rem]" >
+        className="flex flex-wrap items-center -mx-3 font-sans px-4 mx-auto w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md pb-20 gap-y-[10rem] mt-[3rem]" >
         {/* <!-- Column-1 --> */}
         <div className="px-3 w-full lg:w-2/5">
             <div
@@ -45,7 +45,7 @@ export default function Home() {
         <div className="px-3 mb-12 w-full lg:mb-0 lg:w-3/5">
             {/* <!-- Illustrations Container --> */}
             <div className="flex justify-center items-center">
-                          <img src='https://academy.avast.com/hs-fs/hubfs/New_Avast_Academy/what_is_a_dao_academy/what-is-dao-01.png?width=1320&height=600&name=what-is-dao-01.png' />
+                          <img src='https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb0df2c4d-c5e9-42f9-bfa5-69c411a07794_1400x933.jpeg' />
             </div>
         </div>
     </section>

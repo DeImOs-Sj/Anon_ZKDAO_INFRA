@@ -197,12 +197,12 @@ const DaosCard = ({
 
         </div>
      <div>
-      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose} >
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent bg="black">
           <ModalHeader>Join DAO</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody bg="black">
             {added ? (
               <Text>
                 {" "}
