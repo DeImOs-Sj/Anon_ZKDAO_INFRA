@@ -159,9 +159,9 @@ const Profile = () => {
         href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
       />
 
-      <section class="pt-16 bg-white ">
+      <section class="pt-[6rem] bg-black ">
         <div class="w-full lg:w-4/12 px-4 mx-auto ">
-          <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16 border border-black">
+          <div class="relative flex flex-col min-w-0 break-words bg-[#161b22] border border-[#3f3f46]  w-full mb-6 shadow-xl rounded-lg mt-16 ">
             <div class="px-6">
               <div class="flex flex-wrap justify-center">
                 <div class="w-full px-4 flex justify-center mb-[6rem]">
@@ -175,18 +175,18 @@ const Profile = () => {
                 </div>
               </div>
               <div class="text-center mt-12">
-                <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 " name={userInfo[1]} src={userInfo[4]} >
+                <h3 class="text-xl  text-white font-semibold leading-normal mb-2  " name={userInfo[1]} src={userInfo[4]} >
                   {userInfo[1]}
                 </h3>
-                <div class="mb-2 text-blueGray-600">
-                  <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
+                <div class="mb-2 text-white">
+                  <i class="fas fa-university mr-2 text-lg text-white"></i>
                   {userInfo[2]}
                 </div>
               </div>
               <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
                 <div class="flex flex-wrap justify-center">
                   <div class="w-full lg:w-9/12 px-4">
-                    <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
+                    <p class="mb-4 text-lg leading-relaxed text-white">
                       {userInfo[3]}
                     </p>
                     <a
@@ -201,7 +201,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-row justify-center text-black ">
+        <div className="flex flex-row justify-center text-white ">
           <div className="mt-[4rem]  text-center w-[31rem]  h-screen ">
             {userDaos?.length !== 0 && (
               <div className="align-center text-3xl mb-[15px] font-bold">My DAO's</div>
@@ -214,7 +214,7 @@ const Profile = () => {
                   justify="center"
                   h="200px"
                   w="500px"
-                  bg="white"
+                  bg="black"
                   // color="white"
                   borderWidth="1px"
                   borderRadius="lg"
@@ -226,12 +226,12 @@ const Profile = () => {
                     fontSize="lg"
                     mb={4}
                     fontWeight="bold"
-                    color="black"
+                    color="white"
                   >
                     You do not any membership DAO's yet
                   </Text>
                   <Link href="/explore">
-                    <Button colorScheme="green">Join a DAO</Button>
+                    <Button colorScheme="blue">Join a DAO</Button>
                   </Link>
                 </Flex>
               ) : (

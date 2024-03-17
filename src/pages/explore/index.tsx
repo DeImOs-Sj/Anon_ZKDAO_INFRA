@@ -1,49 +1,10 @@
-// @ts-nocheck comment
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { useAccount } from "wagmi";
 import usersideabi from "../../utils/contractabis/usersideabi.json";
 import governancetokenabi from "../../utils/contractabis/governancetokenabi.json";
-import {
-  Progress,
-  Box,
-  ButtonGroup,
-  Button,
-  Heading,
-  Flex,
-  FormControl,
-  GridItem,
-  FormLabel,
-  Input,
-  Select,
-  SimpleGrid,
-  WrapItem,
-  Wrap,
-  InputLeftAddon,
-  InputGroup,
-  Textarea,
-  FormHelperText,
-  InputRightElement,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  Icon,
-  chakra,
-  VisuallyHidden,
-  Text,
-  Stack,
-  ring,
-  Badge,
-  Code,
-  Center,
-  Grid,
-  Container,
-  AbsoluteCenter,
-} from "@chakra-ui/react";
 import DaosCard from "../../components/DaosCard/DaosCard";
-import { Spinner } from "@chakra-ui/react";
+import { Spinner, Box } from "@chakra-ui/react";
 import { ParticleProvider } from "@particle-network/provider";
 
 const Explore = () => {
@@ -52,7 +13,7 @@ const Explore = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const onLoad = async () => {
-    if (window.ethereum._state.accounts.length !== 0) {
+    try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const userSideInstance = new ethers.Contract(
@@ -61,106 +22,38 @@ const Explore = () => {
         signer
       );
       const tempTotalDaos = Number(await userSideInstance.totalDaos());
-      let tempCreatorId,
-        tempDaoInfo,
-        tempCreatorInfo,
-        tempTokenAddress,
-        tempTokenName,
-        tempTokenSymbol;
+      let uniqueDaos = [];
       for (let i = 1; i <= tempTotalDaos; i++) {
-        tempDaoInfo = await userSideInstance.daoIdtoDao(i);
-        tempCreatorId = Number(tempDaoInfo.creator);
-        console.log("Creator Id: " + tempCreatorId);
-        tempCreatorInfo = await userSideInstance.userIdtoUser(tempCreatorId);
-        console.log(tempCreatorInfo);
-        tempTokenAddress = tempDaoInfo.governanceTokenAddress;
-        console.log("TokenAddress: " + tempTokenAddress);
+        const tempDaoInfo = await userSideInstance.daoIdtoDao(i);
+        const tempTokenAddress = tempDaoInfo.governanceTokenAddress;
         const governanceTokenInstance = new ethers.Contract(
           tempTokenAddress,
           governancetokenabi,
           signer
         );
-        console.log(governanceTokenInstance);
-        tempTokenName = await governanceTokenInstance.name();
-        console.log("Token Name: " + tempTokenName);
-        tempTokenSymbol = await governanceTokenInstance.symbol();
-        console.log("Token Symbol: " + tempTokenSymbol);
-        setDaos((daos) => [
-          ...daos,
-          {
-            daoInfo: tempDaoInfo,
-            creatorInfo: tempCreatorInfo,
+        const tempTokenName = await governanceTokenInstance.name();
+        const tempTokenSymbol = await governanceTokenInstance.symbol();
+        const tempCreatorId = Number(tempDaoInfo.creator);
+        const tempCreatorInfo = await userSideInstance.userIdtoUser(tempCreatorId);
+
+        // Check if DAO already exists in uniqueDaos array by comparing daoId
+        const existingIndex = uniqueDaos.findIndex(dao => dao.daoId === tempDaoInfo.daoId);
+        if (existingIndex === -1) {
+          uniqueDaos.push({
+            daoId: tempDaoInfo.daoId,
+            daoName: tempDaoInfo.daoName,
+            joiningThreshold: tempDaoInfo.joiningThreshold,
+            creatorName: tempCreatorInfo.userName,
             tokenName: tempTokenName,
             tokenSymbol: tempTokenSymbol,
-          },
-        ]);
+          });
+        }
       }
-
-      console.log(tempDaoInfo);
-      const totalUsersDAO = await userSideInstance.getAllDaoMembers(
-        tempDaoInfo.daoId
-      );
-      setTotaluserDAO(totalUsersDAO.length);
+      setDaos(uniqueDaos);
       setIsLoading(false);
-      console.log("This is: " + totalUsersDAO.length);
-    } else {
-      const particleProvider = new ParticleProvider(particle.auth);
-      const accounts = await particleProvider.request({
-        method: "eth_accounts",
-      });
-      const ethersProvider = new ethers.providers.Web3Provider(
-        particleProvider,
-        "any"
-      );
-      const signer = ethersProvider.getSigner();
-      const userSideInstance = new ethers.Contract(
-        process.env.NEXT_PUBLIC_USERSIDE_ADDRESS,
-        usersideabi,
-        signer
-      );
-      const tempTotalDaos = Number(await userSideInstance.totalDaos());
-      let tempCreatorId,
-        tempDaoInfo,
-        tempCreatorInfo,
-        tempTokenAddress,
-        tempTokenName,
-        tempTokenSymbol;
-      for (let i = 1; i <= tempTotalDaos; i++) {
-        tempDaoInfo = await userSideInstance.daoIdtoDao(i);
-        tempCreatorId = Number(tempDaoInfo.creator);
-        console.log("Creator Id: " + tempCreatorId);
-        tempCreatorInfo = await userSideInstance.userIdtoUser(tempCreatorId);
-        console.log(tempCreatorInfo);
-        tempTokenAddress = tempDaoInfo.governanceTokenAddress;
-        console.log("TokenAddress: " + tempTokenAddress);
-        const governanceTokenInstance = new ethers.Contract(
-          tempTokenAddress,
-          governancetokenabi,
-          signer
-        );
-        console.log(governanceTokenInstance);
-        tempTokenName = await governanceTokenInstance.name();
-        console.log("Token Name: " + tempTokenName);
-        tempTokenSymbol = await governanceTokenInstance.symbol();
-        console.log("Token Symbol: " + tempTokenSymbol);
-        setDaos((daos) => [
-          ...daos,
-          {
-            daoInfo: tempDaoInfo,
-            creatorInfo: tempCreatorInfo,
-            tokenName: tempTokenName,
-            tokenSymbol: tempTokenSymbol,
-          },
-        ]);
-      }
-
-      console.log(tempDaoInfo);
-      const totalUsersDAO = await userSideInstance.getAllDaoMembers(
-        tempDaoInfo.daoId
-      );
-      setTotaluserDAO(totalUsersDAO.length);
+    } catch (error) {
+      console.error("Error loading data:", error);
       setIsLoading(false);
-      console.log("This is: " + totalUsersDAO.length);
     }
   };
 
@@ -169,45 +62,36 @@ const Explore = () => {
   }, []);
 
   return (
-   <Box>
-  {isLoading ? (
-    <AbsoluteCenter>
-      <Spinner
-        thickness="4px"
-        speed="0.65s"
-        emptyColor="gray.200"
-        color="orange.500"
-        size="xl"
-      />
-    </AbsoluteCenter>
+    <Box>
+      {isLoading ? (
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="orange.500"
+          size="xl"
+          mt="20%"
+          mx="auto"
+          display="block"
+        />
       ) : (
-         <div className="">
- <div className="mt-[4.2rem] h-screen bg-black grid grid-cols-4 grid-rows-2 gap-y-15">
-  {daos &&
-    daos
-                .filter((dao) => dao.daoInfo.isPrivate === false)
-                      .slice(0, 6) // Display only the first 6 unique daoIds
-
-      .map((dao) => (
-        <div key={dao.daoInfo.daoId} className="flex justify-center ">
-          <DaosCard
-            daoName={dao.daoInfo.daoName}
-            joiningThreshold={dao.daoInfo.joiningThreshold}
-            creatorName={dao.creatorInfo.userName}
-            tokenName={dao.tokenName}
-            tokenSymbol={dao.tokenSymbol}
-            totalDaoMember={totaluserDAO}
-            daoId={dao.daoInfo.daoId}
-          />
+        <div className="mt-[4.2rem] h-screen bg-black grid grid-cols-4 grid-rows-2 gap-y-15">
+          {daos.map((dao: any, index: number) => (
+            <div key={index} className="flex justify-center">
+              <DaosCard
+                daoName={dao.daoName}
+                joiningThreshold={dao.joiningThreshold}
+                creatorName={dao.creatorName}
+                tokenName={dao.tokenName}
+                tokenSymbol={dao.tokenSymbol}
+                totalDaoMember={totaluserDAO}
+                daoId={dao.daoId}
+              />
+            </div>
+          ))}
         </div>
-      ))}
-</div>
-
-</div>
-  )}
-            
-</Box>
-
+      )}
+    </Box>
   );
 };
 

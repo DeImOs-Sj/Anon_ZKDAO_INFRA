@@ -145,7 +145,7 @@ const RegisterForm = () => {
  <div>
       <div className="relative min-h-screen grid bg-black ">
         <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 ">
-          <div className="relative sm:w-1/2 xl:w-3/5 bg-blue-500 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover relative" style={{backgroundImage: `url("/bitcoin1.png")`}}>
+          <div className="sm:w-1/2 xl:w-3/5 bg-blue-500 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden text-white bg-no-repeat bg-cover relative" style={{backgroundImage: `url('https://cdn2.vectorstock.com/i/1000x1000/42/11/crypto-currency-ethereum-black-and-white-symbol-vector-17634211.jpg')`}}>
             <div className="absolute bg-black opacity-25 inset-0 z-0"></div>
             <div className="w-full lg:max-w-2xl md:max-w-md z-10 items-center text-center ">
               <div className="font-bold leading-tight mb-6 mx-auto w-full content-center items-center "></div>
@@ -158,6 +158,7 @@ const RegisterForm = () => {
                 <div className="flex items-center justify-center ">
                   <div className="bg-black flex flex-col w-[35rem] border border-gray-900 rounded-lg px-8 py-10">
                     <form className="flex flex-col space-y-8 mt-10">
+                      <p className="text-center text-2xl font-semibold">User Registration Form</p>
                       <label className="font-bold text-lg text-white">Username</label>
                       <input type="text" placeholder="Username" className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"               onChange={(e) => setName(e.target.value)}
  />

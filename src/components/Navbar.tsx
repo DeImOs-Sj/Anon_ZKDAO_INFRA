@@ -17,13 +17,13 @@ export default function Navbar() {
   return (
     <>
       <header className="container ">
-        <nav className="flex justify-between md:justify-around py- bg-white/80 backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 px-8 md:px-3">
+        <nav className="flex justify-between md:justify-around py- bg-white backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 h-[5rem] md:px-3">
           <div className="flex items-center">
             <a className="cursor-pointer">
               <h3 className="text-2xl font-medium text-blue-500">
                 <img
-                  className="h-16"
-                  src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dao-1999933-1697869.png"
+                  className="h-18 w-20"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmSR1FmtD8JP4F4oI61eEGaz-CcVOkvHXKlQ&usqp=CAU"
                   alt="Store Logo"
                 />
               </h3>
@@ -39,7 +39,7 @@ export default function Navbar() {
             </a>
             <a
               href="/create-dao"
-              className="flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold text-blue-600"
+              className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
             >
               Create DAO
             </a>
@@ -73,7 +73,7 @@ export default function Navbar() {
             </svg>
           </button>
           
-          <div className="hidden md:block">
+          <div className="hidden md:block m-[1rem]">
             <ConnectButton
               accountStatus={{
                 smallScreen: "avatar",

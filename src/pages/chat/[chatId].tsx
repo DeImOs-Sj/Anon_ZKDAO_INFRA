@@ -193,7 +193,7 @@ const index = () => {
   }
 
   return (
-    <div>
+    <div className="bg-black h-screen">
       {isMember == "Denied" ? (
         <Center>You are not a member of the Group</Center>
       ) : (

@@ -79,7 +79,7 @@ const Files = () => {
   };
   return (
     <div>
-      <Grid templateColumns="repeat(3, 1fr)" gap={6} mt={6} ml={3}>
+      <Grid templateColumns="repeat(3, 1fr)" gap={6} mt={6} ml={3} bg="black">
         {files.map((document) => (
           <DocumentCard
             key={document[0].toString}
@@ -90,9 +90,9 @@ const Files = () => {
       </Grid>
 
       {selectedDocument && (
-        <Modal isOpen={modalIsOpen} onClose={closeModal}>
+        <Modal isOpen={modalIsOpen} onClose={closeModal} bg="black" >
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent bg="black" >
             <ModalHeader>{selectedDocument[1]}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
