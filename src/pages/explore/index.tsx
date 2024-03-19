@@ -14,13 +14,13 @@ const Explore = () => {
 
   const onLoad = async () => {
     try {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const userSideInstance = new ethers.Contract(
-        process.env.NEXT_PUBLIC_USERSIDE_ADDRESS,
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const userSideInstance = new ethers.Contract(
+        process.env.NEXT_PUBLIC_USERSIDE_ADDRESS!,
         usersideabi,
         signer
-      );
+    );
       const tempTotalDaos = Number(await userSideInstance.totalDaos());
       let uniqueDaos = [];
       for (let i = 1; i <= tempTotalDaos; i++) {
@@ -49,7 +49,7 @@ const Explore = () => {
           });
         }
       }
-      setDaos(uniqueDaos);
+      setDaos(uniqueDaos as never[]);
       setIsLoading(false);
     } catch (error) {
       console.error("Error loading data:", error);
