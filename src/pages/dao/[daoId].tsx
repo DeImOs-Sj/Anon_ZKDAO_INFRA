@@ -1174,7 +1174,7 @@ const index = () => {
     </Modal>
     <Modal isOpen={isStartOpen} onClose={onStartClose}>
       <ModalOverlay backdropFilter="blur(4px)" />
-      <ModalContent>
+      <ModalContent bg='black'>
         <ModalHeader>Invite member to dao:</ModalHeader>
         <ModalCloseButton />
         <ModalBody>

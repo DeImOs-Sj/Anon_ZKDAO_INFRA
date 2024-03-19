@@ -88,18 +88,48 @@ const Form3 = ({ getJoiningThreshold, getProposal, getVisibility }) => {
 
   return (
     <>
-             <div className="lg:text-left text-center">
-                <div className="flex items-center justify-center ">
-          <div className="bg-black flex flex-col w-[35rem] border border-gray-900 rounded-lg px-8 py-10">
-            <h2 className="text-center text-2xl font-semibold">Details About Dao</h2>
-                    <form className="flex flex-col space-y-8 mt-10">
-                      <label className="font-bold text-lg text-white">Joining Requirement</label>
-                      <input type="text" placeholder="Minimum Amount" className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"    onChange={(value) => handleTokens(value)} />
-                      <label >Enter minimum number of tokens required to join DAO</label>
-                      {/* <input type="Token Name" placeholder="Token Name" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white" onChange={(e) => handleTokenName(e.target.value)}/> */}
-                      <label className="font-bold text-lg text-white">Proposal Threshold</label>
-              <input type="text" placeholder="Token Supply" className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white" onChange={(value) => handleProposal(value)} />
-              <p>Enter minimum number of tokens required to create a proposal</p>
+ <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
+        Governance Details
+      </Heading>
+      <SimpleGrid columns={1} spacing={6}>
+        <FormControl mr="5%" mt="2%">
+          <FormLabel htmlFor="yoe" fontWeight={"normal"}>
+            Joining Threshold
+          </FormLabel>
+          <NumberInput
+            step={1}
+            min={1}
+            onChange={(value) => handleTokens(value)}
+          >
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+          <FormHelperText>
+            Enter minimum number of tokens required to join DAO
+          </FormHelperText>
+        </FormControl>
+        <FormControl mr="5%" mt="2%">
+          <FormLabel htmlFor="yoe" fontWeight={"normal"}>
+            Proposal Threshold
+          </FormLabel>
+          <NumberInput
+            step={1}
+            min={1}
+            onChange={(value) => handleProposal(value)}
+          >
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+          <FormHelperText>
+            Enter minimum number of tokens required to create a proposal
+          </FormHelperText>
+        </FormControl>
         <FormControl mr="5%">
           <FormLabel htmlFor="first-name" fontWeight={"normal"}>
             Is DAO private ?
@@ -123,11 +153,7 @@ const Form3 = ({ getJoiningThreshold, getProposal, getVisibility }) => {
             </Stack>
           </RadioGroup>
         </FormControl>
-                    </form>
-                  </div>
-                </div>
-              </div>
-
+      </SimpleGrid>
 
     </>
   );
