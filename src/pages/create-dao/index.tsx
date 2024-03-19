@@ -52,7 +52,7 @@ const CreateDao = () => {
 
 
 
-    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 bg-black">
       <div className="flex flex-col items-center justify-between w-full mb-10 lg:flex-row">
         
       <Image alt="logo" width="450" height="450" src="https://images.ctfassets.net/c5bd0wqjc7v0/2VlFOt9CXEfCiEu0yn5AmI/cd775355a50493fb8fc99f215035ceb1/The_Ethereum_Merge_is_Coming__Here___s_what_you_need_to_know.png" />
