@@ -15,8 +15,8 @@ export default function Navbar() {
 
 
   return (
-    <>
-      <header className="container ">
+    
+      <header className="container bg-black ">
         <nav className="flex justify-between md:justify-around py- bg-white backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 h-[5rem] md:px-3">
           <div className="flex items-center">
             <a className="cursor-pointer">
@@ -120,6 +120,6 @@ export default function Navbar() {
           </div>
         )}
       </header>
-    </>
+  
   );
 }

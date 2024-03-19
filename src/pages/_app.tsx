@@ -45,6 +45,7 @@ export default function App({ Component, pageProps }: AppProps) {
               display: "flex",
               flexDirection: "column",
               minHeight: "100vh",
+              background:"black"
             }}
           >
             <Navbar />
